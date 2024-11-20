@@ -1,0 +1,169 @@
+{
+	"info": {
+		"_postman_id": "5d0c6edb-89d8-424a-87af-1485cf1c538d",
+		"name": "SuperHeroTask",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27752549"
+	},
+	"item": [
+		{
+			"name": "add-complaint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"requesterName\":\"Test User\",\n    \"complaintType\":\"Test complaintType\",\n    \"dangerLevel\":\"Sample danger\",\n    \"location\":{\n        \"lat\":10.782839769999995,\n        \"lng\":76.02737426499996\n    },\n    \"description\":\"Sample description for a complain\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/new-complaint"
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/login"
+			},
+			"response": []
+		},
+		{
+			"name": "get-complaints",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VJZCI6IjY3M2IzZThjOTQ2NjgzNjc1NjNkNTBkMiIsImlhdCI6MTczMTk4NzU2NH0.wUJoTT6BYvlczS9JYh-6_KTgL_4fJwKLQe4qBkPMxMU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/get-all-complaints"
+			},
+			"response": []
+		},
+		{
+			"name": "get-complaint-count-by type",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VJZCI6IjY3M2IzZThjOTQ2NjgzNjc1NjNkNTBkMiIsImlhdCI6MTczMTk4NzU2NH0.wUJoTT6BYvlczS9JYh-6_KTgL_4fJwKLQe4qBkPMxMU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/get-complaint-count-by-type"
+			},
+			"response": []
+		},
+		{
+			"name": "danger-level-count",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VJZCI6IjY3M2IzZThjOTQ2NjgzNjc1NjNkNTBkMiIsImlhdCI6MTczMTk4NzU2NH0.wUJoTT6BYvlczS9JYh-6_KTgL_4fJwKLQe4qBkPMxMU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/get-complaint-count-by-danger-level"
+			},
+			"response": []
+		},
+		{
+			"name": "get-complaint-lcoations",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VJZCI6IjY3M2IzZThjOTQ2NjgzNjc1NjNkNTBkMiIsImlhdCI6MTczMTk4NzU2NH0.wUJoTT6BYvlczS9JYh-6_KTgL_4fJwKLQe4qBkPMxMU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:5000/get-latest-complaint-locations"
+			},
+			"response": []
+		},
+		{
+			"name": "update-status",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VJZCI6IjY3M2IzZThjOTQ2NjgzNjc1NjNkNTBkMiIsImlhdCI6MTczMTk4NzU2NH0.wUJoTT6BYvlczS9JYh-6_KTgL_4fJwKLQe4qBkPMxMU"
+					}
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"complaintId\":\"673a009073439c15d96f605c\",\n    \"status\":\"resolved\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/update-complaint-status"
+			},
+			"response": []
+		},
+		{
+			"name": "complaint-summary",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": {
+						"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VJZCI6IjY3M2IzZThjOTQ2NjgzNjc1NjNkNTBkMiIsImlhdCI6MTczMTk4NzU2NH0.wUJoTT6BYvlczS9JYh-6_KTgL_4fJwKLQe4qBkPMxMU"
+					}
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/get-complaint-summary"
+			},
+			"response": []
+		}
+	]
+}
