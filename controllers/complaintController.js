@@ -112,3 +112,52 @@ exports.updateComplaintStatus = async (req, res) => {
     return res.status(500).json("Internal server error");
   }
 }
+
+exports.getComplaintSummary = async (req, res) => {
+  try {
+    // Fetch and group complaints
+    const complaintData = await complaints.aggregate([
+      {
+        $group: {
+          _id: "$status",
+          total: { $sum: 1 },
+        },
+      },
+    ]);
+
+    // Fetch immediate attention complaints
+    const immediateAttentionCount = await complaints.countDocuments({
+      dangerLevel: {
+        $in: [
+          "Danger To Life",
+          "Danger To Property",
+          "Danger To Safety",
+          "Danger To Animals",
+        ],
+      },
+    });
+
+    // Map results to the required format
+    const summary = [
+      {
+        title: "Immediate Attention Required",
+        count: immediateAttentionCount,
+      },
+      {
+        title: "Open Issues",
+        count:
+          complaintData.find((item) => item._id === "open")?.total || 0,
+      },
+      {
+        title: "Pending Issues",
+        count:
+          complaintData.find((item) => item._id === "pending")?.total || 0,
+      },
+    ];
+
+    res.status(200).json(summary);
+  } catch (error) {
+    console.error("Error fetching complaint summary:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+}
