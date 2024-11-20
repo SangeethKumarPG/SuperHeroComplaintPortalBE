@@ -8,5 +8,6 @@ router.get('/get-all-complaints', jwtMiddleWare, complaintController.getComplain
 router.get('/get-complaint-count-by-type', jwtMiddleWare, complaintController.getUniqueComplaintCountByType);
 router.get('/get-complaint-count-by-danger-level', jwtMiddleWare, complaintController.getUniqueDangerLevelCount);
 router.get('/get-latest-complaint-locations', jwtMiddleWare, complaintController.getLatestComplaintLocations);
+router.put('/update-complaint-status', jwtMiddleWare, complaintController.updateComplaintStatus)
 
 module.exports = router;

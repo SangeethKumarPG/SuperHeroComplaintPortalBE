@@ -29,7 +29,7 @@ const complaintSchema = new mongoose.Schema({
     },
     status:{
         type:String,
-        default:"pending"
+        default:"open"
     },
     createdDate:{
         type:Date,

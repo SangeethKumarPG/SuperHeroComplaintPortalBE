@@ -97,3 +97,18 @@ exports.getLatestComplaintLocations = async (req,res)=>{
     return res.status(500).json("Internal server error");
   }
 }
+
+exports.updateComplaintStatus = async (req, res) => {
+  try {
+    const { complaintId, status } = req.body;
+    const updatedComplaint = await complaint.findByIdAndUpdate(
+      complaintId,
+      { status },
+      { new: true }
+    );
+    return res.status(200).json("status updated successfully");
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json("Internal server error");
+  }
+}
