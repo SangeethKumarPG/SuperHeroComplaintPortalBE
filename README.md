@@ -38,3 +38,11 @@ NOTE:
 - The API uses JWT for authentication.
 - The API uses MongoDB as the database.
 - Pass the JWT token in the Authentication header while making requests to the API.
+- The application requires a .env file to be present in the root directory with the following variables:
+
+```DATABASE = mongodb url
+GOOGLE_APP_PASSWORD = app password for google oauth
+GOOGLE_USER_EMAIL = email of the google user
+ADMIN_EMAIL = email of the admin user
+JWT_SECRET = secret key for JWT
+```
